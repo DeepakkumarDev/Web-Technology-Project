@@ -20,5 +20,11 @@ router.get("/Cart",(req,res)=>{
 router.get("/About",(req,res)=>{
     res.render("about")
 })
+router.get("/login",(req,res)=>{
+    res.render("login")
+})
+router.get("/signinform",(req,res)=>{
+    res.render("signinform")
+})
 
 module.exports=router;

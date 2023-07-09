@@ -26,13 +26,14 @@ db.connect((err) => {
   }
 });
 
+app.use(express.urlencoded({extended:false}));
+console.log(express.json());
+
 app.set("view engine","hbs"); 
 
 app.use("/",require("./routes/pages"));
 
-app.get("/", (req, res) => {
-  res.send("<h1>Buyer interface</h1>");
-});
+app.use("/auth",require("./routes/auth"));
 
 
 
