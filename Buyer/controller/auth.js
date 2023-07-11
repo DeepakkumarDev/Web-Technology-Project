@@ -30,9 +30,9 @@ exports.register = (req, res) => {
     } else {
 
 
-      let passwordhash=await bcrypt.hash(password,8);
-      console.log(passwordhash);
-      db.query("INSERT INTO buyer (username, password, phone_no, email_b, id_A) VALUES (?, ?, ?, ?, ?)", [fullname,passwordhash, phone, email, "2023"], (err, result) => {
+      //let passwordhash=await bcrypt.hash(password,8);
+     // console.log(passwordhash);
+      db.query("INSERT INTO buyer (username, password, phone_no, email_b, id_A) VALUES (?, ?, ?, ?, ?)", [fullname,password, phone, email, "2023"], (err, result) => {
         if (err) {
           console.log("this the error ", err);
         } else {
@@ -47,26 +47,24 @@ exports.register = (req, res) => {
 };
 
 
-
-
 exports.login = (req, res) => {
-  const { fullname, email, phone, password, cpassword } = req.body;
+  const { email, password} = req.body;
 
-  db.query("SELECT * FROM buyer WHERE email_b = ?", [email],async (err, result) => {
+  db.query("SELECT * FROM buyer WHERE email_b = ?", [email], async (err, result) => {
     if (err) {
       console.log("this the error ", err);
     } else if (result.length > 0) {
       console.log(result);
-        
-      await bcrypt.compare(password,result[0].password,(err,match)=>{
-        if(match)
-        {
-          return render("home",{message:"you are logged in"});
-        }else{
-          return render("login",{message:"Your password is incorrect "});
-        }
-      })
 
+      //await bcrypt.compare(password, result[0].password, (err, match) => {
+
+
+        if (result[0].password===password) {
+          res.render("home", { message: "you are logged in"+result[0].username });
+        } else {
+          res.render("login", { message: "Your password is incorrect" });
+        }
+      //});
     }
   });
 };
