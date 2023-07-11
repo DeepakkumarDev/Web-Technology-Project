@@ -2,6 +2,7 @@ const express = require("express");
 const mysql= require("mysql");
 const jwt=require("jsonwebtoken");
 const bcrypt=require("bcryptjs");
+const { render } = require("express/lib/response");
 
 const db = mysql.createConnection({
   host: process.env.Host_db,
@@ -9,6 +10,8 @@ const db = mysql.createConnection({
   password: process.env.Password_db,
   database: process.env.Database
 });
+
+
 
 exports.register = (req, res) => {
   const { fullname, email, phone, password, cpassword } = req.body;
@@ -39,6 +42,31 @@ exports.register = (req, res) => {
           });
         }
       });
+    }
+  });
+};
+
+
+
+
+exports.login = (req, res) => {
+  const { fullname, email, phone, password, cpassword } = req.body;
+
+  db.query("SELECT * FROM buyer WHERE email_b = ?", [email],async (err, result) => {
+    if (err) {
+      console.log("this the error ", err);
+    } else if (result.length > 0) {
+      console.log(result);
+        
+      await bcrypt.compare(password,result[0].password,(err,match)=>{
+        if(match)
+        {
+          return render("home",{message:"you are logged in"});
+        }else{
+          return render("login",{message:"Your password is incorrect "});
+        }
+      })
+
     }
   });
 };
