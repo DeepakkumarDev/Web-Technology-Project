@@ -32,6 +32,7 @@ exports.register = (req, res) => {
 
       //let passwordhash=await bcrypt.hash(password,8);
      // console.log(passwordhash);
+     // this my commit for create pull request
       db.query("INSERT INTO buyer (username, password, phone_no, email_b, id_A) VALUES (?, ?, ?, ?, ?)", [fullname,password, phone, email, "2023"], (err, result) => {
         if (err) {
           console.log("this the error ", err);
