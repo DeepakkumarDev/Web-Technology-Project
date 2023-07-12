@@ -4,14 +4,9 @@ const controlers=require("../controller/auth");
 
 const router=express.Router();
 
-router.post("/register",controlers.register);
+console.log("auth file is loDED")
 
 router.post("/login",controlers.login);
-
-
-
-
-
 
 
 module.exports=router;

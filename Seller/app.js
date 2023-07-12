@@ -12,10 +12,10 @@ app.use(express.static(publicDic));
 console.log(publicDic);
 
 const db = mysql.createConnection({
-  host: process.env.Host_db,
-  user: process.env.User_db,
-  password: process.env.Password_db,
-  database: process.env.Database
+  host: process.env.Host_db_s,
+  user: process.env.User_db_s,
+  password: process.env.Password_db_s,
+  database: process.env.Database_s
 });
 
 db.connect((err) => {
@@ -37,6 +37,7 @@ app.use("/auth",require("./routes/auth"));
 
 
 
-app.listen(3050, () => {
-  console.log("Server is running on port 3050");
+
+app.listen(3030, () => {
+  console.log("Server is running on port 3030");
 });

@@ -5,12 +5,39 @@ const bcrypt=require("bcryptjs");
 const { render } = require("express/lib/response");
 
 const db = mysql.createConnection({
-  host: process.env.Host_db,
-  user: process.env.User_db,
-  password: process.env.Password_db,
-  database: process.env.Database
+  host: process.env.Host_db_s,
+  user: process.env.User_db_s,
+  password: process.env.Password_db_s,
+  database: process.env.Database_s
 });
 
+
+
+exports.login = (req, res) => {
+  const { username_S, password} = req.body;
+
+  db.query("SELECT * FROM Seller WHERE username_S= ?", [username_S], async (err, result) => {
+    console.log(result,username_S,password);
+    if (err) {
+      console.log("this the error ", err);
+    } else if (result.length > 0) {
+      console.log(result);
+
+      //await bcrypt.compare(password, result[0].password, (err, match) => {
+
+
+        if (result[0].Password===password) {
+          res.render("home", { message: "you are logged in"+result[0].username_S });
+        } else {
+          res.render("login", { message: "Your password is incorrect" });
+        }
+      //});
+    }else{
+      
+      return res.render('login',{message:"user name is is not found"})
+    }
+  });
+};
 
 
 exports.register = (req, res) => {
@@ -48,24 +75,3 @@ exports.register = (req, res) => {
 };
 
 
-exports.login = (req, res) => {
-  const { email, password} = req.body;
-
-  db.query("SELECT * FROM buyer WHERE email_b = ?", [email], async (err, result) => {
-    if (err) {
-      console.log("this the error ", err);
-    } else if (result.length > 0) {
-      console.log(result);
-
-      //await bcrypt.compare(password, result[0].password, (err, match) => {
-
-
-        if (result[0].password===password) {
-          res.render("home", { message: "you are logged in"+result[0].username });
-        } else {
-          res.render("login", { message: "Your password is incorrect" });
-        }
-      //});
-    }
-  });
-};
