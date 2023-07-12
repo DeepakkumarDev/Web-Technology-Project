@@ -19,7 +19,7 @@ exports.login = (req, res) => {
   db.query("SELECT * FROM Seller WHERE username_S= ?", [username_S], async (err, result) => {
     console.log(result,username_S,password);
     if (err) {
-      console.log("this the error ", err);
+      console.log("This is the error ", err);
     } else if (result.length > 0) {
       console.log(result);
 
@@ -40,8 +40,33 @@ exports.login = (req, res) => {
 };
 
 
-exports.register = (req, res) => {
+exports.addproduct = (req, res) => {
   const { fullname, email, phone, password, cpassword } = req.body;
+         const image=req.files;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
   db.query("SELECT email_b FROM buyer WHERE email_b = ?", [email],async (err, result) => {
     if (err) {

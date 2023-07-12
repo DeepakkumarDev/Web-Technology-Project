@@ -1,17 +1,22 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM" crossorigin="anonymous">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM" crossorigin="anonymous">
     <link rel="stylesheet" href="general.css">
+    <link rel="stylesheet" href="signin.css">
+
     <title>Document</title>
 </head>
+
 <body>
-    <div  id="menue">
+    <div id="menue">
         <img src="logo.jpeg" alt="logo of website" width="5%" height="5%">
         <a href="" id="cname">Ecommece</a>
-        
+
         <label for="space" id="spa">
             <input type="text" name="" id="space" placeholder="search product ">
         </label>
@@ -21,10 +26,83 @@
             <li><a href="addproduct">Add Product</a></li>
             <li><a href="salehistory">History of Sale</a></li>
             <li><a href="feedback">Feedback</a></li>
-            
+
         </ul>
+
+
+    </div>
+
+    <div id="getdata">
+        <form action="/auth/addproduct" method="post">
+        <label for="cars">Categories</label>
+
+        <select name=" menu" id="cars">
+            <option value="electronics">Electronics</option>
+            <option value="grocery">Groceries</option>
+            <option value="fashion">Fashion</option>
+        </select>
+        <label for="">Product Name
+            <input type="text" name="Product_name" id="">
+        </label>
+        <br>
+        <br>
+        <label for="">Product Price
+            <input type="number" name="Product_price" id="">
+        </label>
+        <br>
+        <br><br>
+        <label for="">Product Image
+            <input type="file" name="Product_image" id="1">
+            <input type="file" name="Product_image" id="2">
+            <input type="file" name="Product_image" id="3">
+            <input type="file" name="Product_image" id="4">
+            <input type="file" name="Product_image" id="5">
+            <input type="file" name="Product_image" id="6">
+            <input type="file" name="Product_image" id="7">
+            <input type="file" name="Product_image" id="8">
+            <input type="file" name="Product_image" id="9">
+            <input type="file" name="Product_image" id="10">
+
+        </label>
+        <br><br>
+        <label for="">Product BrandID
+            <input type="text" name="Product_BrandID" id="">
+        </label>
+        <br><br>
+        <label for="">Product Weight
+            <input type="number" name="Product_weight" id="">
+        </label>
+        <br><br>
+        <label for="">Product Stock
+            <input type="number" name="Product_stock" id="">
+        </label>
+        <br>
+        <br>
+        <br>
+        <label for="">Product Location
+            <input type="number" name="Product_location" id="">
+        </label>
+        <br><br>
+        <label for="">Product Cart
+            <input type="number" name="Product_cart" id="">
+        </label>
+        <br><br>
+        <label for="">Product Category ID
+            <input type="number" name="Product_category_id" id="">
+        </label>
+        <br>
+        <label for="">
+            <input type="submit" name="" id="">
+        </label>
+        {{#if message}}
+        <h1>{{message}}</h1>
+        {{/if}}
+    </form>
     </div>
     <h1>card</h1>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-geWF76RCwLtnZ8qwWowPQNguL3RmwHVBC9FhGdlKrxdiJJigb/j/68SIy3Te4Bkz" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-geWF76RCwLtnZ8qwWowPQNguL3RmwHVBC9FhGdlKrxdiJJigb/j/68SIy3Te4Bkz"
+        crossorigin="anonymous"></script>
 </body>
+
 </html>
