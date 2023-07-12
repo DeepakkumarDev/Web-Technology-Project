@@ -1,0 +1,141 @@
+CREATE TABLE `Admin` (
+	`id` varchar(50) NOT NULL UNIQUE,
+	`Username_A` varchar(50) NOT NULL UNIQUE,
+	`password` varchar(50) NOT NULL UNIQUE,
+	PRIMARY KEY (`id`)
+);
+
+CREATE TABLE `Seller` (
+	`id_s` INT(50) NOT NULL AUTO_INCREMENT,
+	`S_Name` varchar(50) NOT NULL,
+	`Comp_name` varchar(50) NOT NULL UNIQUE,
+	`email_s` varchar(50) NOT NULL UNIQUE,
+	`phone_no` INT(10) NOT NULL UNIQUE,
+	`username_S` varchar(50) NOT NULL UNIQUE,
+	`Password` varchar(15) NOT NULL UNIQUE,
+	`id_A` varchar(50) NOT NULL,
+	PRIMARY KEY (`id_s`)
+);
+
+CREATE TABLE `Buyer` (
+    `id_b` INT(10) NOT NULL AUTO_INCREMENT,
+    `username` VARCHAR(50) NOT NULL,
+    `password` VARCHAR(15) NOT NULL UNIQUE,
+    `phone_no` INT(10) NOT NULL UNIQUE,
+    `email_b` VARCHAR(50) NOT NULL UNIQUE,
+    `id_A` VARCHAR(50) NOT NULL,
+    PRIMARY KEY (`id_b`)
+);
+
+
+CREATE TABLE `Products` (
+	`id_P` INT(50) NOT NULL AUTO_INCREMENT ,
+	`Product_name` varchar(50) NOT NULL,
+	`Product_price` INT(20) NOT NULL,
+	`Product_image` varchar(100) NOT NULL,
+	`Product_BrandID` varchar(50) NOT NULL UNIQUE,
+	`Product_weight` INT(50) NOT NULL,
+	`Product_stock` INT(50) NOT NULL,
+	`Product_location` varchar(50) NOT NULL,
+	`Product_cart` varchar(50) NOT NULL,
+	`Product_category_id` INT(50) NOT NULL UNIQUE,
+	`id_A` varchar(50) NOT NULL,
+	`Seller_id` INT(50) NOT NULL,
+	PRIMARY KEY (`id_P`)
+);
+
+CREATE TABLE `Product_categories` (
+	`category_id` INT(50) NOT NULL UNIQUE,
+	`category_name` varchar(50) NOT NULL,
+	PRIMARY KEY (`category_id`)
+);
+
+CREATE TABLE `OrderDetails` (
+	`Order_id` INT(50) NOT NULL AUTO_INCREMENT ,
+	`Detail_orderID` INT(50) NOT NULL UNIQUE,
+	`Detail_ProductID` INT(50) NOT NULL UNIQUE,
+	`Product_Quantity` INT(50) NOT NULL,
+	`Product_price` INT(50) NOT NULL,
+	`s_id` INT(50) NOT NULL,
+	PRIMARY KEY (`Order_id`)
+);
+
+CREATE TABLE `Order` (
+	`Order_id` INT(50) NOT NULL UNIQUE,
+	`Order_userId` INT(50) NOT NULL UNIQUE,
+	`Order_Amount` FLOAT(50) NOT NULL,
+	`Order_shipname` varchar(50) NOT NULL,
+	`Order_shipAddress` varchar(50) NOT NULL,
+	`Order_Quantity` varchar(50) NOT NULL,
+	`Order_payment` INT(50) NOT NULL,
+	`Order_stage` varchar(50) NOT NULL,
+	`Order_phone` INT(10) NOT NULL,
+	`Order_pincode` INT(10) NOT NULL,
+	`Order_email` varchar(50) NOT NULL,
+	`Order_Date` DATE NOT NULL,
+	`Order_TrackinNo` varchar(50) NOT NULL UNIQUE,
+	`buyer_name` INT NOT NULL,
+	PRIMARY KEY (`Order_id`)
+);
+
+CREATE TABLE `Feedback` (
+	`F_id` INT(50) NOT NULL AUTO_INCREMENT,
+	`Username` varchar(50) NOT NULL,
+	`F_details` varchar(100) NOT NULL,
+	PRIMARY KEY (`F_id`)
+);
+
+CREATE TABLE `Order_History` (
+	`Order_id` INT(50) NOT NULL UNIQUE,
+	`Order_userId` INT(50) NOT NULL UNIQUE,
+	`Order_Amount` FLOAT(50) NOT NULL,
+	`Order_shipname` varchar(50) NOT NULL,
+	`Order_shipAddress` varchar(50) NOT NULL,
+	`Order_Quantity` varchar(50) NOT NULL,
+	`Order_phone` INT(10) NOT NULL,
+	`Order_pincode` INT(10) NOT NULL,
+	`Order_email` varchar(50) NOT NULL,
+	`Order_Date` DATE NOT NULL,
+	`Order_payment` INT(50) NOT NULL,
+	`seller_name` INT(50) NOT NULL,
+	`Buyer_name` INT(50) NOT NULL,
+	PRIMARY KEY (`Order_id`)
+);
+
+CREATE TABLE `Payment` (
+	`Payment_id` INT(50) NOT NULL UNIQUE,
+	`Payment_type` varchar(50) NOT NULL,
+	PRIMARY KEY (`Payment_id`)
+);
+
+ALTER TABLE `Seller` ADD CONSTRAINT `Seller_fk0` FOREIGN KEY (`id_A`) REFERENCES `Admin`(`id`);
+
+ALTER TABLE `Buyer` ADD CONSTRAINT `Buyer_fk0` FOREIGN KEY (`id_A`) REFERENCES `Admin`(`id`);
+
+ALTER TABLE `Products` ADD CONSTRAINT `Products_fk0` FOREIGN KEY (`id_A`) REFERENCES `Admin`(`id`);
+
+ALTER TABLE `Products` ADD CONSTRAINT `Products_fk1` FOREIGN KEY (`Seller_id`) REFERENCES `Seller`(`id_s`);
+
+ALTER TABLE `Product_categories` ADD CONSTRAINT `Product_categories_fk0` FOREIGN KEY (`category_id`) REFERENCES `Products`(`Product_category_id`);
+
+ALTER TABLE `OrderDetails` ADD CONSTRAINT `OrderDetails_fk0` FOREIGN KEY (`Detail_orderID`) REFERENCES `Order`(`Order_id`);
+
+ALTER TABLE `OrderDetails` ADD CONSTRAINT `OrderDetails_fk1` FOREIGN KEY (`Detail_ProductID`) REFERENCES `Products`(`id_P`);
+
+ALTER TABLE `OrderDetails` ADD CONSTRAINT `OrderDetails_fk2` FOREIGN KEY (`s_id`) REFERENCES `Seller`(`id_s`);
+
+ALTER TABLE `Order` ADD CONSTRAINT `Order_fk0` FOREIGN KEY (`Order_payment`) REFERENCES `Payment`(`Payment_id`);
+
+ALTER TABLE `Order` ADD CONSTRAINT `Order_fk1` FOREIGN KEY (`Order_email`) REFERENCES `Buyer`(`email_b`);
+
+ALTER TABLE `Order` ADD CONSTRAINT `Order_fk2` FOREIGN KEY (`buyer_name`) REFERENCES `Buyer`(`id_b`);
+
+ALTER TABLE `Feedback` ADD CONSTRAINT `Feedback_fk0` FOREIGN KEY (`Username`) REFERENCES `Seller`(`username_S`);
+
+ALTER TABLE `Feedback` ADD CONSTRAINT `Feedback_fk1` FOREIGN KEY (`Username`) REFERENCES `Seller`(`username_S`);
+
+ALTER TABLE `Order_History` ADD CONSTRAINT `Order_History_fk0` FOREIGN KEY (`Order_email`) REFERENCES `Buyer`(`email_b`);
+
+ALTER TABLE `Order_History` ADD CONSTRAINT `Order_History_fk1` FOREIGN KEY (`seller_name`) REFERENCES `Seller`(`id_s`);
+
+ALTER TABLE `Order_History` ADD CONSTRAINT `Order_History_fk2` FOREIGN KEY (`Buyer_name`) REFERENCES `Buyer`(`id_b`);

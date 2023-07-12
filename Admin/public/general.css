@@ -1,0 +1,35 @@
+body{
+     background-color:lightblue;
+}
+#menue{
+     background-color:lightyellow;
+     display: flex;
+}
+#menue ul{
+     list-style: none;
+     display: flex;
+     padding-left: 20%;
+     
+}
+#menue  li{
+      
+     padding-left: 20%;
+     
+     padding-top: 8%;
+     
+}
+#menue a{
+     text-decoration: none;
+}
+#spa{
+     align-items: center;
+     padding-top: 1%;
+     padding-bottom: 1%;
+     padding-left:20%;
+}
+#space{
+     width: 200%;
+}
+#cname{
+     font-size: 200%;
+}
