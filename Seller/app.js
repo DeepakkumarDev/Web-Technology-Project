@@ -1,7 +1,13 @@
-const express = require("express");
-const path = require("path");
-const mysql = require("mysql");
-const dotenv = require("dotenv");
+const express=require("express");
+const mysql=require("mysql");
+const path=require("path");
+const dotenv=require("dotenv");
+const exp = require("constants");
+const multer= require('multer');
+
+
+
+
 
 dotenv.config(); // Load environment variables from .env file
 
@@ -10,6 +16,11 @@ const app = express();
 const publicDic=path.join(__dirname,'./public');
 app.use(express.static(publicDic));
 console.log(publicDic);
+
+
+const uploadDic=path.join(__dirname,'../storage');
+app.use(express.static(uploadDic));
+console.log(uploadDic);
 
 const db = mysql.createConnection({
   host: process.env.Host_db_s,

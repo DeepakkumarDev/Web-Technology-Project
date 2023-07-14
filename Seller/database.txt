@@ -33,12 +33,12 @@ CREATE TABLE `Products` (
 	`Product_name` varchar(50) NOT NULL,
 	`Product_price` INT(20) NOT NULL,
 	`Product_image` varchar(100) NOT NULL,
-	`Product_BrandID` varchar(50) NOT NULL UNIQUE,
+	`Product_BrandID` varchar(50) NOT NULL,
 	`Product_weight` INT(50) NOT NULL,
 	`Product_stock` INT(50) NOT NULL,
 	`Product_location` varchar(50) NOT NULL,
 	`Product_cart` varchar(50) NOT NULL,
-	`Product_category_id` INT(50) NOT NULL UNIQUE,
+	`Product_category_id` INT(50) NOT NULL,
 	`id_A` varchar(50) NOT NULL,
 	`Seller_id` INT(50) NOT NULL,
 	PRIMARY KEY (`id_P`)
@@ -116,7 +116,7 @@ ALTER TABLE `Products` ADD CONSTRAINT `Products_fk0` FOREIGN KEY (`id_A`) REFERE
 
 ALTER TABLE `Products` ADD CONSTRAINT `Products_fk1` FOREIGN KEY (`Seller_id`) REFERENCES `Seller`(`id_s`);
 
-ALTER TABLE `Product_categories` ADD CONSTRAINT `Product_categories_fk0` FOREIGN KEY (`category_id`) REFERENCES `Products`(`Product_category_id`);
+ALTER TABLE `Products` ADD CONSTRAINT `Product_categories_fk0` FOREIGN KEY (`Product_category_id`) REFERENCES `Product_categories`(`category_id`);
 
 ALTER TABLE `OrderDetails` ADD CONSTRAINT `OrderDetails_fk0` FOREIGN KEY (`Detail_orderID`) REFERENCES `Order`(`Order_id`);
 

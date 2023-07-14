@@ -4,7 +4,8 @@ const multer= require("multer");
 
 const controlers=require("../controller/auth");
 
-const upload=multer({dest:"../upload/"})
+const upload=multer({dest:"../storage/upload"})
+
 const router=express.Router();
 
 

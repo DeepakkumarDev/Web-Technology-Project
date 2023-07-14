@@ -33,10 +33,10 @@
     </div>
 
     <div id="getdata">
-        <form action="/auth/addproduct" method="post">
+        <form action="/auth/addproduct" method="post"  enctype="multipart/form-data">
         <label for="cars">Categories</label>
 
-        <select name=" menu" id="cars">
+        <select name="categori" id="cars">
             <option value="electronics">Electronics</option>
             <option value="grocery">Groceries</option>
             <option value="fashion">Fashion</option>
@@ -52,17 +52,7 @@
         <br>
         <br><br>
         <label for="">Product Image
-            <input type="file" name="Product_image" id="1">
-            <input type="file" name="Product_image" id="2">
-            <input type="file" name="Product_image" id="3">
-            <input type="file" name="Product_image" id="4">
-            <input type="file" name="Product_image" id="5">
-            <input type="file" name="Product_image" id="6">
-            <input type="file" name="Product_image" id="7">
-            <input type="file" name="Product_image" id="8">
-            <input type="file" name="Product_image" id="9">
-            <input type="file" name="Product_image" id="10">
-
+             <input type="file" name="files" multiple>
         </label>
         <br><br>
         <label for="">Product BrandID

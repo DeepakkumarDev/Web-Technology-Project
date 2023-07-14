@@ -41,62 +41,66 @@ exports.login = (req, res) => {
 
 
 exports.addproduct = (req, res) => {
-  const { fullname, email, phone, password, cpassword } = req.body;
+  
          const image=req.files;
+        //block to store the name of images
+        //**************************************************************** */
+        str_image='{';
+        let i=0;
+         for (const file of image) {
+          
+          const {filename} = file;
+
+          str_image+='"'+i+'":"'+filename+'",';
+          i++;
+         }
+         
+         // this for ignoreing last comma 
+         str_image= str_image.slice(0,-1);
+         str_image+='}';
+         
+         //var obj;
+         //obj+= JSON.parse(str_image);
+         //console.log(str_image);
+         //console.log(obj);
+
+         //********************************************************** */
 
 
+  
+         const { categori, Product_name, Product_price, Product_BrandID, Product_weight, Product_stock, Product_location, Product_cart, Product_category_id } = req.body;
+
+         db.query("SELECT category_id FROM Product_categories WHERE category_name = ?", [categori],async (err, result) => {
+           if (err) {
+             console.log("this the error ", err);
+           } else if (result.length > 0) {
+             return res.render("addproduct", {
+               message: "products type does not exist "
+             });
+           } else {
 
 
+            console.log(result[0].category_id);
+            product_cat_id=result[0].category_id;
 
+       
+             //let passwordhash=await bcrypt.hash(password,8);
+            // console.log(passwordhash);
+            // this my commit for create pull request
+             db.query("INSERT INTO Products(Product_name,Product_price,Product_image,Product_BrandID,Product_weight,Product_stock,Product_location,Product_cart,Product_category_id,id_A,Seller_id) VALUES (?, ?, ?, ?, ?, ?, ?,?, ? ,?)", [ Product_name, Product_price, Product_BrandID, Product_weight, Product_stock,  Product_location,Product_cart, product_cat_id,123,"2023" ], (err, result) => {
+               if (err) {
+                 console.log("this the error ", err);
+               } else {
+                 console.log("Insertion was successful");
+                 return res.render("home", {
+                   message: "Seller added successfully"
+                 });
+               }
+             });
+           }
+         });
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-  db.query("SELECT email_b FROM buyer WHERE email_b = ?", [email],async (err, result) => {
-    if (err) {
-      console.log("this the error ", err);
-    } else if (result.length > 0) {
-      return res.render("signin", {
-        message: "Your email id already exists"
-      });
-    } else if (password !== cpassword) {
-      return res.render("signin", {
-        message: "Your password does not match. Please enter the password again"
-      });
-    } else {
-
-
-      //let passwordhash=await bcrypt.hash(password,8);
-     // console.log(passwordhash);
-     // this my commit for create pull request
-      db.query("INSERT INTO buyer (username, password, phone_no, email_b, id_A) VALUES (?, ?, ?, ?, ?)", [fullname,password, phone, email, "2023"], (err, result) => {
-        if (err) {
-          console.log("this the error ", err);
-        } else {
-          console.log("Insertion was successful");
-          return res.render("home", {
-            message: "You have been successfully registered"
-          });
-        }
-      });
-    }
-  });
+         
 };
 
 
