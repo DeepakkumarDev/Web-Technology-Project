@@ -2,7 +2,6 @@ const express = require("express");
 const mysql= require("mysql");
 const jwt=require("jsonwebtoken");
 const bcrypt=require("bcryptjs");
-const { render } = require("express/lib/response");
 
 const db = mysql.createConnection({
   host: process.env.Host_db_s,
@@ -69,11 +68,17 @@ exports.addproduct = (req, res) => {
 
   
          const { categori, Product_name, Product_price, Product_BrandID, Product_weight, Product_stock, Product_location, Product_cart, Product_category_id } = req.body;
+         
 
-         db.query("SELECT category_id FROM Product_categories WHERE category_name = ?", [categori],async (err, result) => {
+         console.log(typeof(Product_BrandID));
+
+
+
+         db.query("SELECT * FROM Product_categories WHERE category_name=?",[categori],async (err, result) => {
            if (err) {
              console.log("this the error ", err);
-           } else if (result.length > 0) {
+           } else if (result.length < 0) {
+
              return res.render("addproduct", {
                message: "products type does not exist "
              });
@@ -87,7 +92,8 @@ exports.addproduct = (req, res) => {
              //let passwordhash=await bcrypt.hash(password,8);
             // console.log(passwordhash);
             // this my commit for create pull request
-             db.query("INSERT INTO Products(Product_name,Product_price,Product_image,Product_BrandID,Product_weight,Product_stock,Product_location,Product_cart,Product_category_id,id_A,Seller_id) VALUES (?, ?, ?, ?, ?, ?, ?,?, ? ,?)", [ Product_name, Product_price, Product_BrandID, Product_weight, Product_stock,  Product_location,Product_cart, product_cat_id,123,"2023" ], (err, result) => {
+            db.query("INSERT INTO Products(Product_name, Product_price, Product_image, Product_BrandID, Product_weight, Product_stock, Product_location, Product_cart, Product_category_id, id_A, Seller_id) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)", [Product_name, Product_price, str_image, Product_BrandID, Product_weight, Product_stock, Product_location, Product_cart,product_cat_id,"2023",123], (err, result) => {
+
                if (err) {
                  console.log("this the error ", err);
                } else {

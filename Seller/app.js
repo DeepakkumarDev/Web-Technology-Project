@@ -3,24 +3,25 @@ const mysql=require("mysql");
 const path=require("path");
 const dotenv=require("dotenv");
 const exp = require("constants");
-const multer= require('multer');
+const multer = require('multer');
+const exphbs = require('express-handlebars');
 
 
 
+const app=express();
+app.set("view engine",'hbs')
+
+dotenv.config({path:"./.env"})
+//this the file where the image going to store
+
+const publicDirc=path.join(__dirname,"./public");
+app.use(express.static(publicDirc));
+console.log(publicDirc);
 
 
-dotenv.config(); // Load environment variables from .env file
+app.use(express.urlencoded({extended:false}));
+console.log(express.json());
 
-const app = express();
-
-const publicDic=path.join(__dirname,'./public');
-app.use(express.static(publicDic));
-console.log(publicDic);
-
-
-const uploadDic=path.join(__dirname,'../storage');
-app.use(express.static(uploadDic));
-console.log(uploadDic);
 
 const db = mysql.createConnection({
   host: process.env.Host_db_s,
@@ -29,26 +30,28 @@ const db = mysql.createConnection({
   database: process.env.Database_s
 });
 
-db.connect((err) => {
-  if (err) {
-    console.log("Error: ", err);
-  } else {
-    console.log("Database connection is successful");
-  }
-});
 
-app.use(express.urlencoded({extended:false}));
-console.log(express.json());
+db.connect((err)=>
+{
+    if(err){
+        console.log("Error occuren ",err);
 
-app.set("view engine","hbs"); 
+    }else{
+        console.log("Data  base connectioin sucessful ");
+    } 
+})
+
+
+
+
+app.use("/auth",require('./routes/auth'))
 
 app.use("/",require("./routes/pages"));
 
-app.use("/auth",require("./routes/auth"));
 
 
 
-
-app.listen(3030, () => {
-  console.log("Server is running on port 3030");
+app.listen(3030,()=>
+{
+    console.log("server successfully started 3000 ");
 });
