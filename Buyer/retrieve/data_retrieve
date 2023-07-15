@@ -1,0 +1,37 @@
+const express = require("express");
+const mysql= require("mysql");
+const jwt=require("jsonwebtoken");
+const bcrypt=require("bcryptjs");
+const { render } = require("express/lib/response");
+
+const db = mysql.createConnection({
+  host: process.env.Host_db,
+  user: process.env.User_db,
+  password: process.env.Password_db,
+  database: process.env.Database
+});
+
+
+exports.home_data = (req, res) => {
+  db.query("SELECT * FROM products", (err, result) => {
+    if (err) {
+      console.log("Error executing MySQL query:", err);
+      return;
+    }
+    str="<h1>hello"
+//    console.log(result);
+    for(const file of result )
+    {
+      const {id_A}=file;
+       str+=id_A;
+    }
+    str+="</h1>";
+    console.log(str);
+
+
+    if (result.length > 0) {
+      return res.render("home", { data:result}); // Pass the result as an object
+    }
+    // Handle other scenarios if needed
+  });
+};

@@ -9,7 +9,12 @@ const app = express();
 
 const publicDic=path.join(__dirname,'./public');
 app.use(express.static(publicDic));
-console.log(publicDic);
+
+
+const publicphoto=path.join(__dirname,'../storage/categori');
+app.use(express.static(publicphoto));
+
+console.log(publicphoto);
 
 const db = mysql.createConnection({
   host: process.env.Host_db,
