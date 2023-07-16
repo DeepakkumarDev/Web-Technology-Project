@@ -1,41 +1,160 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
 
-    
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM" crossorigin="anonymous">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
 
-    <link rel="stylesheet" href="/general.css">
-    <script>
-        
+  <link rel="stylesheet" href="/general.css">
+  <link rel="stylesheet" href="/signin.css">
+  <script>
 
-    </script>
-    <title>Document</title>
+
+  </script>
 </head>
-<body>
-    <div  id="menue">
-        <img src="logo.jpeg" alt="logo of website" width="5%" height="5%">
-        <a href="" id="cname">Ecommece</a>
-        
-        <label for="space" id="spa">
-            <input type="text" name="" id="space" placeholder="search product ">
-        </label>
-        <ul>
-            <li><a href="home">Home</a></li>
-            <li><a href="login">Log In</a></li>
-            <li><a href="addproduct">Add Product</a></li>
-            <li><a href="salehistory">History of Sale</a></li>
-            <li><a href="feedback">Feedback</a></li>
-            
-        </ul>
-    </div>
-    {{#if message}}
-    <h1>{{message}}</h1>
 
-    {{/if}}
-    <h1>home page</h1>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-geWF76RCwLtnZ8qwWowPQNguL3RmwHVBC9FhGdlKrxdiJJigb/j/68SIy3Te4Bkz" crossorigin="anonymous"></script>
+<body>
+
+  <nav class="navbar navbar-expand-lg">
+    <a class="navbar-brand" href="home"><img src="logoo.jpg" alt="website logo" class="logo-image"></a>
+
+    <form class="form-inline my-2 my-lg-0">
+      <input class="form-control mr-sm-2" type="search" placeholder="Search" style="width: 500px;" aria-label="Search">
+      <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+    </form>
+    <button style="background-color:white;" class="navbar-toggler" type="button" data-toggle="collapse"
+      data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
+      <ul class="navbar-nav ml-auto">
+        <li class="nav-item">
+          <a class="nav-link" href="home">Home</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="login">Login</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="addproduct">Add Product</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="salehistory">Sale History</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="feedback">Feedback</a>
+        </li>
+      </ul>
+    </div>
+  </nav>
+  <div class="container-fluid ">
+    <div class="row">
+      <div class="col-xs-1 column-gap">
+        <img id="image1" src="computer.jpeg" alt="Image 1" width="100%" height="112px">
+      </div>
+      <div class="col-xs-1 column-gap">
+        <img id="image1" src="phone.jpeg" alt="Image 2" width="100%" height="112px">
+      </div>
+      <div class="col-xs-3 column-gap">
+        <img id="image1" src="watch.jpeg" alt="Image 3" width="100%" height="112px">
+      </div>
+      <div class="col-xs-3 column-gap">
+        <img id="image1" src="airpod.jpeg" alt="Image 3" width="100%" height="115px">
+      </div>
+      <div class="col-xs-3 column-gap">
+        <img id="image1" src="headphone.jpeg" alt="Image 5" width="100%" height="115px">
+      </div>
+      <div class="col-xs-3 column-gap">
+        <img id="image1" src="grocery.jpeg" alt="Image 3" width="100%" height="115px">
+      </div>
+
+      <div class="col-xs-3 column-gap">
+        <img id="image1" src="purse.jpg" alt="Image 3" width="100%" height="115px">
+      </div>
+      <div class="col-xs-3 column-gap">
+        <img id="image1" src="computer.jpeg" alt="Image 2" width="100%" height="115px">
+      </div>
+      <div class="col-xs-3 column-gap">
+        <img id="image1" src="girlshoes.jpg" alt="Image 1" width="100%" height="115px">
+      </div>
+      <div class="col-xs-3 column-gap">
+        <img id="image1" src="coffee.jpg" alt="Image 1" width="100%" height="115px">
+      </div>
+      <div class="col-xs-3 column-gap">
+        <img id="image1" src="shoes.jpg" alt="Image 5" width="100%" height="115px">
+      </div>
+    </div>
+
+    <div class="shop-section">
+        <div class="box1 box">
+            <div class="box-content">
+                <h2>Electronics</h2>
+                <div class="box-img" style="background-image: url('phone.jpeg');"></div>
+                <p>Shop now</p>
+            </div>
+        </div>
+        <div class="box2 box">
+            <div class="box-content">
+                <h2>Fashion Trends</h2>
+                <div class="box-img" style="background-image: url('dress.jpg');"></div>
+                <p>See more</p>
+            </div>
+        </div>
+        <div class="box3 box">
+            <div class="box-content">
+                <h2>Grocery</h2>
+                <div class="box-img" style="background-image: url('grocery.jpeg');"></div>
+                <p>Shop now</p>
+            </div>
+        </div>
+        <div class="box3 box">
+            <div class="box-content">
+                <h2>Health and Wellness</h2>
+                <div class="box-img" style="background-image: url('gym.jpg');"></div>
+                <p>Shop now</p>
+            </div>
+        </div>
+      </div>
+
+
+    <ul>
+      <div class="container">
+        {{#each data}}
+        <li>{{this.Product_name}}</li>
+
+        <div class="row">
+          <div class="col-md-4">
+            <img src={{this.Product_image}} alt="Product Image" class="img-fluid">
+          </div>
+          <div class="col-md-8">
+            <h2>{{this.Product_name}}</h2>
+            <h3>&#8377; {{this.Product_price}}</h3>
+            <p>Product Description Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer nec odio.
+              Praesent libero. Sed cursus ante dapibus diam.</p>
+            <form action="/add_to_cart" method="POST">
+            
+              <input type="hidden" name="product_name" value="{{this.Product_name}}">
+              <input type="hidden" name="product_price" value="{{this.Product_price}}">
+              <input type="hidden" name="Seller_id" value="{{this.Seller_id}}">
+              <input type="hidden" name="id_P" value="{{this.id_P}}">
+
+
+
+              <button type="submit" class="btn btn-primary">Add to Cart</button>
+            </form>
+            {{#if message}}
+            <p>{{message}}</p>
+            {{/if}}
+          </div>
+        </div>
+        {{/each}}
+      </div>
+    </ul>
+
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
 </body>
+
 </html>

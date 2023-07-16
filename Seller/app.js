@@ -53,5 +53,5 @@ app.use("/",require("./routes/pages"));
 
 app.listen(3030,()=>
 {
-    console.log("server successfully started 3000 ");
+    console.log("server successfully started 3030 ");
 });
