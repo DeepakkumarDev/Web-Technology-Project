@@ -1,27 +1,31 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-    
+
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
 
-    <link rel="stylesheet" href="/general.css">
-    <script>
-        
+  <link rel="stylesheet" href="/general.css">
+  <link rel="stylesheet" href="/signin.css">
+  <script>
 
-    </script>
+
+  </script>
 </head>
+
 <body>
-    
+
   <nav class="navbar navbar-expand-lg">
-    <a class="navbar-brand" href="#"><img src="logo.jpeg" alt="website logo" class="logo-image"></a>
+    <a class="navbar-brand" href="#"><img src="logoo.jpg" alt="website logo" class="logo-image"></a>
 
     <form class="form-inline my-2 my-lg-0">
       <input class="form-control mr-sm-2" type="search" placeholder="Search" style="width: 500px;" aria-label="Search">
       <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
     </form>
-    <button style="background-color:white;" class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+    <button style="background-color:white;" class="navbar-toggler" type="button" data-toggle="collapse"
+      data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
     <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
@@ -39,7 +43,7 @@
           <a class="nav-link" href="about">About</a>
         </li>
       </ul>
-    </div>   
+    </div>
   </nav>
   <div class="container-fluid ">
     <div class="row">
@@ -61,48 +65,82 @@
       <div class="col-xs-3 column-gap">
         <img id="image1" src="grocery.jpeg" alt="Image 3" width="100%" height="115px">
       </div>
-      
+
       <div class="col-xs-3 column-gap">
-        <img id="image1" src="fashion.jpeg" alt="Image 3" width="100%" height="115px">
+        <img id="image1" src="purse.jpg" alt="Image 3" width="100%" height="115px">
       </div>
       <div class="col-xs-3 column-gap">
         <img id="image1" src="computer.jpeg" alt="Image 2" width="100%" height="115px">
       </div>
       <div class="col-xs-3 column-gap">
-        <img id="image1" src="computer.jpeg" alt="Image 1" width="100%" height="115px">
+        <img id="image1" src="girlshoes.jpg" alt="Image 1" width="100%" height="115px">
       </div>
       <div class="col-xs-3 column-gap">
-        <img id="image1" src="computer.jpeg" alt="Image 1" width="100%" height="115px">
+        <img id="image1" src="coffee.jpg" alt="Image 1" width="100%" height="115px">
       </div>
       <div class="col-xs-3 column-gap">
-        <img id="image1" src="computer.jpeg" alt="Image 5" width="100%" height="115px">
-      </div>
-  </div><ul>
-
-    
-  <div class="container">
-    
-    {{#each data}}
-    <li>{{this.Product_name}}</li>
-
-    <div class="row">
-      <div class="col-md-4">
-        <img src="phone.jpeg" alt="Product Image" class="img-fluid">
-      </div>
-      <div class="col-md-8">
-        <h2>{{this.Product_name}}</h2>
-        <h3>{{this.Product_price}}</h3>
-        <p>Product Description Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer nec odio. Praesent libero. Sed cursus ante dapibus diam.</p>
-        <button class="btn btn-primary">Add to Cart</button>
+        <img id="image1" src="shoes.jpg" alt="Image 5" width="100%" height="115px">
       </div>
     </div>
-    
-    {{/each}}
-  </div>
 
-  </ul>
+    <div class="shop-section">
+        <div class="box1 box">
+            <div class="box-content">
+                <h2>Electronics</h2>
+                <div class="box-img" style="background-image: url('phone.jpeg');"></div>
+                <p>Shop now</p>
+            </div>
+        </div>
+        <div class="box2 box">
+            <div class="box-content">
+                <h2>Fashion Trends</h2>
+                <div class="box-img" style="background-image: url('dress.jpg');"></div>
+                <p>See more</p>
+            </div>
+        </div>
+        <div class="box3 box">
+            <div class="box-content">
+                <h2>Grocery</h2>
+                <div class="box-img" style="background-image: url('grocery.jpeg');"></div>
+                <p>Shop now</p>
+            </div>
+        </div>
+        <div class="box3 box">
+            <div class="box-content">
+                <h2>Health and Wellness</h2>
+                <div class="box-img" style="background-image: url('gym.jpg');"></div>
+                <p>Shop now</p>
+            </div>
+        </div>
+      </div>
 
-  <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
-  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script></body>
+    <ul>
+      <div class="container">
+
+        {{#each data}}
+        <li>{{this.Product_name}}</li>
+
+        <div class="row">
+          <div class="col-md-4">
+            <img src="phone.jpeg" alt="Product Image" class="img-fluid">
+          </div>
+          <div class="col-md-8">
+            <h2>{{this.Product_name}}</h2>
+            <h3>{{this.Product_price}}</h3>
+            <p>Product Description Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer nec odio. Praesent
+              libero. Sed cursus ante dapibus diam.</p>
+            <button class="btn btn-primary">Add to Cart</button>
+          </div>
+        </div>
+
+        {{/each}}
+      </div>
+
+    </ul>
+
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+</body>
+
 </html>
