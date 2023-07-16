@@ -1,27 +1,50 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-    
+
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
-
-    <link rel="stylesheet" href="/general.css">
-    <script>
-        
-
-    </script>
-</head>
-<body>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+        integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+  <link rel="stylesheet" href="/general.css">
+  <style>
+    body {
+      background-color: #e8fbff;
+    }
+    .team-card {
+      background-color: #c0c3c6;
+      border: none;
+    }
+    .team-card .card-body {
+      padding: 1.25rem;
+      text-align: center;
+    }
+    .team-card .card-title {
+      font-size: 1.125rem;
+      font-weight: bold;
+      margin-bottom: 0.75rem;
+    }
+    h2{
+      font-weight: bold;
+    }
     
+  </style>
+</head>
+
+<body>
+
   <nav class="navbar navbar-expand-lg">
-    <a class="navbar-brand" href="#"><img src="logo.jpeg" alt="website logo" class="logo-image"></a>
+    <a class="navbar-brand" href="#"><img src="logoo.jpg" alt="website logo" class="logo-image"></a>
 
     <form class="form-inline my-2 my-lg-0">
       <input class="form-control mr-sm-2" type="search" placeholder="Search" style="width: 500px;" aria-label="Search">
       <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
     </form>
-    <button style="background-color:white;" class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+    <button style="background-color:white;" class="navbar-toggler" type="button" data-toggle="collapse"
+      data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
     <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
@@ -40,13 +63,76 @@
         </li>
       </ul>
     </div>
-    
-  
-    
   </nav>
-    <h1>about page </h1>
 
+  <!-- About Section -->
+  <section class="py-5">
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-6">
+          <h2>Welcome to our website.</h2>
+          <p>We are delighted to present our college project, an ecommerce website designed to provide an enjoyable and convenient shopping experience. Our vision is to create a user-friendly and innovative platform where seller and buyer can directly interact through this website. We are committed to sourcing and offering only the finest products that meet our strict quality standards.Sign up for exclusive offers, discounts, and updates.</p>
+        </div>
+        <div class="col-lg-2">
+          <img src="about-img.jpg" alt="About Image" class="img-fluid">
+        </div>
+      </div>
+
+      <!-- Team Section -->
+      <div class="row mt-5">
+        <div class="col-lg-12 text-center">
+          <h2>Our Team</h2>
+          <hr class="thick-hr">
+        </div>
+        <div class="col-lg-3 col-md-6 mt-4">
+          <div class="card team-card">
+            
+            <div class="card-body">
+              <h5 class="card-title"><i class="fa-solid fa-user"></i> Sapna Rani</h5>
+              <p class="card-text">She is currently pursuing MCA from DUCS.</p>
+            </div>
+          </div>
+        </div>
+        <div class="col-lg-3 col-md-6 mt-4">
+          <div class="card team-card">
+            
+            <div class="card-body">
+              <h5 class="card-title"><i class="fa-solid fa-user"></i> Muhibullah Noorzad</h5>
+              <p class="card-text">He is currently pursuing MCA from DUCS.</p>
+            </div>
+          </div>
+        </div>
+        <div class="col-lg-3 col-md-6 mt-4">
+          <div class="card team-card">
+            
+            <div class="card-body">
+              <h5 class="card-title"><i class="fa-solid fa-user"></i> Deepak Kumar Dev</h5>
+              <p class="card-text">He is currently pursuing MCA from DUCS.</p>
+            </div>
+          </div>
+        </div>
+        <div class="col-lg-3 col-md-6 mt-4">
+          <div class="card team-card">
+            
+            <div class="card-body">
+              <h5 class="card-title"><i class="fa-solid fa-user"></i> Muheb Fazli</h5>
+              <p class="card-text">He is currently pursuing MCA from DUCS.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="bg-dark text-light py-4">
+    <div class="container text-center">
+      <p>&copy; 2023 Grooot. All rights reserved.</p>
+    </div>
+  </footer>
   <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
-  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script></body>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+</body>
+
 </html>

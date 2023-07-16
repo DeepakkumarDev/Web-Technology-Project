@@ -17,7 +17,7 @@
 <body>
     
   <nav class="navbar navbar-expand-lg">
-    <a class="navbar-brand" href="#"><img src="logo.jpeg" alt="website logo" class="logo-image"></a>
+    <a class="navbar-brand" href="#"><img src="logoo.jpg" alt="website logo" class="logo-image"></a>
 
     <form class="form-inline my-2 my-lg-0">
       <input class="form-control mr-sm-2" type="search" placeholder="Search" style="width: 500px;" aria-label="Search">
@@ -44,36 +44,40 @@
     </div>
     
   </nav>
-<div id="getdata" class="d-flex justify-content-center bg-gray">
-  <form class="form" action="/auth/register" method="post">
-    <div class="form-group">
-      <label for="fullname">Full Name</label>
-      <input type="text" class="form-control form-control-lg" name="fullname" id="fullname">
-    </div>
-    <div class="form-group">
-      <label for="email">Email ID</label>
-      <input type="email" class="form-control form-control-lg" name="email" id="email">
-    </div>
-    <div class="form-group">
-      <label for="phone">Phone</label>
-      <input type="number" class="form-control form-control-lg" name="phone" id="phone">
-    </div>
-    <div class="form-group">
-      <label for="password">Password</label>
-      <input type="password" class="form-control form-control-lg" name="password" id="password">
-    </div>
-    <div class="form-group">
-      <label for="cpassword">Confirm Password</label>
-      <input type="password" class="form-control form-control-lg" name="cpassword" id="cpassword">
-    </div>
-    <button type="submit" class="btn btn-primary btn-lg">Submit</button>
-    {{#if message}}
-    <h1>{{message}}</h1>
-    {{/if}}
-  </form>
-</div>
 
-    <h1>about page </h1>
+  <div class="container">
+    <div class="row">
+      <div class="col-md-6 offset-md-3">
+        <form class="login-form" action="/auth/register" method="post">
+          <h2>Sign Up</h2>
+          <div class="mb-3">
+            <label for="fullname" class="form-label">Full Name</label>
+            <input type="text" class="form-control" name="fullname" id="fullname" placeholder="Enter your name" style="width: 350px;">
+          </div>
+          <div class="mb-3">
+            <label for="email" class="form-label">Email ID</label>
+            <input type="email" class="form-control" name="email" id="email" placeholder="Enter your email" style="width: 350px;">
+          </div>
+          <div class="mb-3">
+            <label for="phone" class="form-label">Phone</label>
+            <input type="phone" class="form-control" name="phone" id="phone" placeholder="Enter your phone no" style="width: 350px;">
+          </div>
+          <div class="mb-3">
+            <label for="password" class="form-label">Password</label>
+            <input type="password" class="form-control" name="password" id="password" placeholder="Enter password" style="width: 350px;">
+          </div>
+          <div class="mb-3">
+            <label for="cpassword" class="form-label"> Confirm Password</label>
+            <input type="password" class="form-control" name="cpassword" id="cpassword" placeholder="Confirm password" style="width: 350px;">
+          </div>
+          <button type="submit" class="btn btn-primary">Submit</button>
+          {{#if message}}
+          <h1>{{message}}</h1>
+          {{/if}}
+        </form>
+      </div>
+    </div>
+  </div>
 
   <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>

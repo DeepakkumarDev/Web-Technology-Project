@@ -7,11 +7,11 @@ dotenv.config(); // Load environment variables from .env file
 
 const app = express();
 
-const publicDic=path.join(__dirname,'./public');
+const publicDic = path.join(__dirname, './public');
 app.use(express.static(publicDic));
 
 
-const publicphoto=path.join(__dirname,'../storage/categori');
+const publicphoto = path.join(__dirname, '../storage/categori');
 app.use(express.static(publicphoto));
 
 console.log(publicphoto);
@@ -31,14 +31,14 @@ db.connect((err) => {
   }
 });
 
-app.use(express.urlencoded({extended:false}));
+app.use(express.urlencoded({ extended: false }));
 console.log(express.json());
 
-app.set("view engine","hbs"); 
+app.set("view engine", "hbs");
 
-app.use("/",require("./routes/pages"));
+app.use("/", require("./routes/pages"));
 
-app.use("/auth",require("./routes/auth"));
+app.use("/auth", require("./routes/auth"));
 
 
 
