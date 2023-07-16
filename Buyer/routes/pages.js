@@ -48,4 +48,8 @@ router.get("/signinform", (req, res) => {
   res.render("signinform");
 });
 
+
+
+router.post("/search_data",retreiver.search_data);
+
 module.exports = router;

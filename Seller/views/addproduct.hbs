@@ -1,24 +1,26 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
 
-    
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
 
 
-    <link rel="stylesheet" href="/general.css">
-    
-    <link rel="stylesheet" href="/signin.css">
-    <script>
-        
+  <link rel="stylesheet" href="/general.css">
 
-    </script>
-    <title>Document</title>
+  <link rel="stylesheet" href="/signin.css">
+  <script>
+
+
+  </script>
+  <title>Document</title>
 </head>
+
 <body>
-    <nav class="navbar navbar-expand-lg">
+  <nav class="navbar navbar-expand-lg">
     <a class="navbar-brand" href="home"><img src="logoo.jpg" alt="website logo" class="logo-image"></a>
 
     <form class="form-inline my-2 my-lg-0">
@@ -49,110 +51,57 @@
       </ul>
     </div>
   </nav>
-
-    <div class="container">
-    <div class="row">
-      <div class="col-md-6 offset-md-3">
-        <form class="login-form" id="login-id" action="/auth/addproduct" method="post" enctype="multipart/form-data">
-          <h2>Add Product Details</h2>
-          <div class="mb-3">
-          <label for="cars">Categories</label>
-            <select name="categori" id="cars">
-            <option value="electronics">Electronics</option>
-            <option value="grocery">Groceries</option>
-            <option value="fashion">Fashion</option>
-            <option value="health">Health and Wellness</option>
-            </select>
-            </div>
-          <div class="mb-3">
-            <label for="Product_name" class="form-label">Product Name</label>
-            <input type="text" class="form-control" name="Product_name" style="width: 350px;">
-          </div>
-          <div class="mb-3">
-            <label for="Productprice" class="form-label">Product Price</label>
-            <input type="number" class="form-control" name="Product_price" style="width: 350px;">
-          </div>
-          <div class="mb-3">
-            <label for="productimage" class="form-label">Product Image</label>
-            <input type="file" class="form-control" name="files" style="width: 350px;">
-          </div>
-          <div class="mb-3">
-            <label for="brandid" class="form-label">Product BrandID</label>
-            <input type="text" class="form-control" name="Product_location" style="width: 350px;">
-          </div>
-          <div class="mb-3">
-            <label for="weight" class="form-label">Product Weight</label>
-            <input type="number" class="form-control" style="width: 350px;">
-          </div>
-          <div class="mb-3">
-            <label for="stock" class="form-label">Product Stock</label>
-            <input type="number" class="form-control" name="Product_stock" style="width: 350px;">
-          </div>
-          <div class="mb-3">
-            <label for="stock" class="form-label">Product Location</label>
-            <input type="number" class="form-control" name="Product_location" style="width: 350px;">
-          </div>
-          <button type="submit" class="btn btn-primary">Submit</button>
-          {{#if message}}
-          <h1>{{message}}</h1>
-          {{/if}}
-        </form>
-      </div>
+  <div id="getdata">
+  <form action="/auth/addproduct" method="post" enctype="multipart/form-data" class="container">
+    <div class="form-group">
+      <label for="cars">Categories</label>
+      <select name="categori" id="cars" class="form-control">
+        <option value="electronics">Electronics</option>
+        <option value="grocery">Groceries</option>
+        <option value="fashion">Fashion</option>
+      </select>
     </div>
-  </div>
-    {{!-- <div id="getdata">
-        <form action="/auth/addproduct" method="post"  enctype="multipart/form-data">
-        <label for="cars">Categories</label>
-
-        <select name="categori" id="cars">
-            <option value="electronics">Electronics</option>
-            <option value="grocery">Groceries</option>
-            <option value="fashion">Fashion</option>
-        </select>
-        <label for="">Product Name
-            <input type="text" name="Product_name" id="">
-        </label>
-        <br>
-        <br>
-        <label for="">Product Price
-            <input type="number" name="Product_price" id="">
-        </label>
-        <br>
-        <br><br>
-        <label for="">Product Image
-             <input type="file" name="files" >
-        </label>
-        <br><br>
-        <label for="">Product BrandID
-            <input type="text" name="Product_BrandID" id="">
-        </label>
-        <br><br>
-        <label for="">Product Weight
-            <input type="number" name="Product_weight" id="">
-        </label>
-        <br><br>
-        <label for="">Product Stock
-            <input type="number" name="Product_stock" id="">
-        </label>
-        <br>
-        <br>
-        <br>
-        <label for="">Product Location
-            <input type="text" name="Product_location" id="">
-        </label>
-        <br><br>
-        <label for="">
-            <input type="submit" name="" id="">
-        </label>
-        {{#if message}}
-        <h1>{{message}}</h1>
-        {{/if}}
-    </form>
+    <div class="form-group">
+      <label for="productName">Product Name</label>
+      <input type="text" name="Product_name" id="productName" class="form-control">
     </div>
-    <h1>card</h1> --}}
-    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+    <div class="form-group">
+      <label for="productPrice">Product Price</label>
+      <input type="number" name="Product_price" id="productPrice" class="form-control">
+    </div>
+    <div class="form-group">
+      <label for="productImage">Product Image</label>
+      <input type="file" name="files" id="productImage" class="form-control-file">
+    </div>
+    <div class="form-group">
+      <label for="productBrandID">Product BrandID</label>
+      <input type="text" name="Product_BrandID" id="productBrandID" class="form-control">
+    </div>
+    <div class="form-group">
+      <label for="productWeight">Product Weight</label>
+      <input type="number" name="Product_weight" id="productWeight" class="form-control">
+    </div>
+    <div class="form-group">
+      <label for="productStock">Product Stock</label>
+      <input type="number" name="Product_stock" id="productStock" class="form-control">
+    </div>
+    <div class="form-group">
+      <label for="productLocation">Product Location</label>
+      <input type="text" name="Product_location" id="productLocation" class="form-control">
+    </div>
+    <div class="form-group">
+      <input type="submit" class="btn btn-primary" value="Submit">
+    </div>
+    {{#if message}}
+    <h1>{{message}}</h1>
+    {{/if}}
+  </form>
+</div>
+
+  <h1>card</h1>
+  <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
 </body>
 
 </html>

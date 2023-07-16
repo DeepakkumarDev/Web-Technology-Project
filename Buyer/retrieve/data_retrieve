@@ -121,4 +121,18 @@ exports.order_buyer_details = (req, res) => {
   */
 };
 
+exports.search_data= (req, res) => {
+    const {search}=req.body;
+  db.query("SELECT * FROM products where  Product_name=?",[search], (err, result) => {
+    if (err) {
+      console.log("Error executing MySQL query:", err);
+      return res.status(500).send("Internal Server Error");
+    }
+
+    if (result.length > 0) {
+      return res.render("search", { data: result });
+    }
+    // Handle other scenarios if needed
+  });
+};
 
