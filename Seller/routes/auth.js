@@ -11,7 +11,7 @@ const router=express.Router();
 
 router.post("/login",controlers.login);
 
-router.post("/addproduct",upload.array('files'),controlers.addproduct);
+router.post("/addproduct",upload.single('files'),controlers.addproduct);
 
 
 router.get("/",(req,res)=>{

@@ -52,7 +52,6 @@ CREATE TABLE `Product_categories` (
 
 CREATE TABLE `OrderDetails` (
 	`Order_id` INT(50) NOT NULL AUTO_INCREMENT ,
-	`Detail_orderID` INT(50) NOT NULL UNIQUE,
 	`Detail_ProductID` INT(50) NOT NULL UNIQUE,
 	`Product_Quantity` INT(50) NOT NULL,
 	`Product_price` INT(50) NOT NULL,

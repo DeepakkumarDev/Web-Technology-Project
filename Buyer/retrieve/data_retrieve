@@ -1,8 +1,10 @@
 const express = require("express");
-const mysql= require("mysql");
-const jwt=require("jsonwebtoken");
-const bcrypt=require("bcryptjs");
-const { render } = require("express/lib/response");
+const mysql = require("mysql");
+const jwt = require("jsonwebtoken");
+const bcrypt = require("bcryptjs");
+const nodemailer = require('nodemailer');
+
+
 
 const db = mysql.createConnection({
   host: process.env.Host_db,
@@ -11,27 +13,112 @@ const db = mysql.createConnection({
   database: process.env.Database
 });
 
-
 exports.home_data = (req, res) => {
   db.query("SELECT * FROM products", (err, result) => {
     if (err) {
       console.log("Error executing MySQL query:", err);
-      return;
+      return res.status(500).send("Internal Server Error");
     }
-    str="<h1>hello"
-//    console.log(result);
-    for(const file of result )
-    {
-      const {id_A}=file;
-       str+=id_A;
-    }
-    str+="</h1>";
-    console.log(str);
-
 
     if (result.length > 0) {
-      return res.render("home", { data:result}); // Pass the result as an object
+      return res.render("home", { data: result });
     }
     // Handle other scenarios if needed
   });
 };
+
+exports.add_to_cart = (req, res) => {
+  const { product_name, product_price, Seller_id, id_P } = req.body;
+
+  db.query(
+    "INSERT INTO orderdetails (Detail_ProductID, Product_Quantity, Product_price, s_id) VALUES (?, ?, ?, ?)",
+    [id_P, 1, product_price, Seller_id],
+    (err, result) => {
+      if (err) {
+        console.log("Error executing MySQL query:", err);
+        return res.status(500).send("Internal Server Error");
+      }
+
+      console.log("Insertion was successful. Added the order.");
+      return res.render("home", {
+        message: "Added to cart"
+      });
+    }
+  );
+};
+
+exports.cart_data = (req, res) => {
+  db.query(
+    "SELECT * FROM products JOIN orderdetails ON orderdetails.Detail_ProductID = products.id_P",
+    (err, result) => {
+      if (err) {
+        console.log("Error executing MySQL query:", err);
+        return res.status(500).send("Internal Server Error");
+      }
+
+      if (result.length > 0) {
+        return res.render("cart", { data: result });
+      }
+      // Handle other scenarios if needed
+    }
+  );
+};
+
+let prod_details = {};
+
+exports.order_item = (req, res) => {
+  const { product_name, product_price, Seller_id, id_P } = req.body;
+  prod_details = { product_name, product_price, Seller_id, id_P };
+  res.render("buyerdetails")
+};
+
+exports.order_buyer_details = (req, res) => {
+  const { fullname, emailb, address, pin } = req.body;
+  const { product_name, product_price, Seller_id, id_P }=prod_details;
+
+   
+  db.query("DELETE  FROM orderdetails where Detail_ProductID=?",[id_P],(err, result) => {
+      if (err) {
+        console.log("Error executing MySQL query:", err);
+        return res.status(500).send("Internal Server Error");
+      }
+        console.log("order successful ");
+        return res.render("home", { data: result });
+      
+      // Handle other scenarios if needed
+    }
+  );
+
+
+
+
+/*
+ subject="order";
+  const transporter = nodemailer.createTransport({
+    service: 'gmail',
+    auth: {
+      user: 'ecomsmmd@gmail.com',
+      pass: 'smmd@12345'
+    }
+  });
+
+  const mailOptions = {
+    from: emailb,
+    to: 'ecomsmmd@gmail.com',
+    subject: subject,
+    text: `From: ${fullname}\n E-Mail: ${emailb}\nSubject: ${subject}\nMessage:\n${address}`
+  };
+
+  transporter.sendMail(mailOptions, (error, info) => {
+    if (error) {
+      console.log('Error sending email:', error);
+      res.send('<p>Ah! Try again, please?</p>');
+    } else {
+      console.log('Email sent:', info.response);
+      res.send('<p>Message Sent Successfully!</p>');
+    }
+  });
+  */
+};
+
+

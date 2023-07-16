@@ -114,28 +114,39 @@
         </div>
       </div>
 
+
     <ul>
       <div class="container">
-
         {{#each data}}
         <li>{{this.Product_name}}</li>
 
         <div class="row">
           <div class="col-md-4">
-            <img src="phone.jpeg" alt="Product Image" class="img-fluid">
+            <img src={{this.Product_image}} alt="Product Image" class="img-fluid">
           </div>
           <div class="col-md-8">
             <h2>{{this.Product_name}}</h2>
-            <h3>{{this.Product_price}}</h3>
-            <p>Product Description Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer nec odio. Praesent
-              libero. Sed cursus ante dapibus diam.</p>
-            <button class="btn btn-primary">Add to Cart</button>
+            <h3>&#8377; {{this.Product_price}}</h3>
+            <p>Product Description Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer nec odio.
+              Praesent libero. Sed cursus ante dapibus diam.</p>
+            <form action="/add_to_cart" method="POST">
+            
+              <input type="hidden" name="product_name" value="{{this.Product_name}}">
+              <input type="hidden" name="product_price" value="{{this.Product_price}}">
+              <input type="hidden" name="Seller_id" value="{{this.Seller_id}}">
+              <input type="hidden" name="id_P" value="{{this.id_P}}">
+
+
+
+              <button type="submit" class="btn btn-primary">Add to Cart</button>
+            </form>
+            {{#if message}}
+            <p>{{message}}</p>
+            {{/if}}
           </div>
         </div>
-
         {{/each}}
       </div>
-
     </ul>
 
     <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"></script>

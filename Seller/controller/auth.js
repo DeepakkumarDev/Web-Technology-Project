@@ -41,9 +41,10 @@ exports.login = (req, res) => {
 
 exports.addproduct = (req, res) => {
   
-         const image=req.files;
+         const image=req.file;
         //block to store the name of images
         //**************************************************************** */
+        /*
         str_image='{';
         let i=0;
          for (const file of image) {
@@ -63,11 +64,16 @@ exports.addproduct = (req, res) => {
          //console.log(str_image);
          //console.log(obj);
 
-         //********************************************************** */
+         //******************************************s**************** */
+         console.log(image);
+
+           const {filename} =image;
+
+           str_image=filename;
 
 
   
-         const { categori, Product_name, Product_price, Product_BrandID, Product_weight, Product_stock, Product_location, Product_cart, Product_category_id } = req.body;
+         const { categori, Product_name, Product_price, Product_BrandID, Product_weight, Product_stock, Product_location } = req.body;
          
 
          console.log(typeof(Product_BrandID));
@@ -92,7 +98,7 @@ exports.addproduct = (req, res) => {
              //let passwordhash=await bcrypt.hash(password,8);
             // console.log(passwordhash);
             // this my commit for create pull request
-            db.query("INSERT INTO Products(Product_name, Product_price, Product_image, Product_BrandID, Product_weight, Product_stock, Product_location, Product_cart, Product_category_id, id_A, Seller_id) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)", [Product_name, Product_price, str_image, Product_BrandID, Product_weight, Product_stock, Product_location, Product_cart,product_cat_id,"2023",123], (err, result) => {
+            db.query("INSERT INTO Products(Product_name, Product_price, Product_image, Product_BrandID, Product_weight, Product_stock, Product_location,Product_category_id, id_A, Seller_id) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)", [Product_name, Product_price, str_image, Product_BrandID, Product_weight, Product_stock, Product_location,product_cat_id,"2023",123], (err, result) => {
 
                if (err) {
                  console.log("this the error ", err);

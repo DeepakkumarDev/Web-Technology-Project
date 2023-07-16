@@ -14,6 +14,9 @@ app.use(express.static(publicDic));
 const publicphoto = path.join(__dirname, '../storage/categori');
 app.use(express.static(publicphoto));
 
+
+const publicupload = path.join(__dirname, '../storage/upload');
+app.use(express.static(publicupload));
 console.log(publicphoto);
 
 const db = mysql.createConnection({

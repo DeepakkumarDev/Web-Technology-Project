@@ -7,6 +7,8 @@
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
 
     <link rel="stylesheet" href="/general.css">
+    <link rel="stylesheet" href="/signin.css">
+
     <script>
         
 
@@ -41,41 +43,37 @@
       </ul>
     </div>
     
-  
-    
   </nav>
 
-
-  <ul>
   <div class="container">
-    {{#each data}}
-    <li>{{this.Product_name}}</li>
-
     <div class="row">
-      <div class="col-md-4 col-lg-3">
-        <img src={{this.Product_image}} alt="Product Image" class="img-fluid">
-      </div>
-      <div class="col-md-8 col-lg-9">
-        <h2>{{this.Product_name}}</h2>
-        <h3>&#8377; {{this.Product_price}}</h3>
-        <p>Product Description Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer nec odio.
-          Praesent libero. Sed cursus ante dapibus diam.</p>
-        <form action="/order_item" method="POST">
-          <input type="hidden" name="product_name" value="{{this.Product_name}}">
-          <input type="hidden" name="product_price" value="{{this.Product_price}}">
-          <input type="hidden" name="Seller_id" value="{{this.Seller_id}}">
-          <input type="hidden" name="id_P" value="{{this.id_P}}">
-          <button type="submit" class="btn btn-primary">Order</button>
+      <div class="col-md-6 offset-md-3">
+        <form class="login-form" action="/order_buyer_details" method="post">
+          <h2>Fill your deteails correctly </details></h2>
+          <div class="mb-3">
+            <label for="fullname" class="form-label">Full Name</label>
+            <input type="text" class="form-control" name="fullname" id="fullname" placeholder="Enter your name" style="width: 350px;">
+          </div>
+          <div class="mb-3">
+            <label for="email" class="form-label">Email ID</label>
+            <input type="email" class="form-control" name="emailb" id="emailb" placeholder="Enter your email" style="width: 350px;">
+          </div>
+          <div class="mb-3">
+            <label for="address" class="form-label">address</label>
+            <input type="address" class="form-control" name="address" id="address" placeholder="Enter your address no" style="width: 350px;">
+          </div>
+          <div class="mb-3">
+            <label for="pin" class="form-label">Area pin code </label>
+            <input type="number" class="form-control" name="pin" id="pin" placeholder="Enter pin" style="width: 350px;">
+          </div>
+          <button type="submit" class="btn btn-primary">Submit</button>
+          {{#if message}}
+          <h1>{{message}}</h1>
+          {{/if}}
         </form>
-        {{#if message}}
-        <p>{{message}}</p>
-        {{/if}}
       </div>
     </div>
-    {{/each}}
   </div>
-</ul>
-  <h1>cart</h1>
 
   <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>

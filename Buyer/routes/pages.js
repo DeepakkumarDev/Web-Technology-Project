@@ -13,19 +13,28 @@ const db = mysql.createConnection({
 
 const router = express.Router();
 
-router.get("/",retreiver.home_data);
+router.get("/home",retreiver.home_data);
 
-router.get("/Home", (req, res) => {
-  res.render("home");
-});
+router.post("/add_to_cart",retreiver.add_to_cart);
+
+router.post("/order_item",retreiver.order_item);
+
+
+router.post("/order_buyer_details",retreiver.order_buyer_details);
+
+
+router.get("/", retreiver.home_data);
+
 
 router.get("/SignIn", (req, res) => {
   res.render("signin");
 });
 
-router.get("/Cart", (req, res) => {
-  res.render("cart");
+router.get("/buyerdetails", (req, res) => {
+  res.render("buyerdetails");
 });
+
+router.get("/cart",retreiver.cart_data);
 
 router.get("/About", (req, res) => {
   res.render("about");
